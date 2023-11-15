@@ -27,5 +27,30 @@
 using namespace std;
 
 int main() {
-    
+    int n,m,k;
+    cin>>n>>m>>k;
+    vector<int> applicant(n);
+    for(int i = 0; i < n; i++) {
+        cin>>applicant[i];
+    }
+    vector<int> apartment(m);
+    for(int i = 0; i < m; i++) {
+        cin>>apartment[i];
+    }
+    int i = 0, j = 0;
+    int ans = 0;
+    sort(applicant.begin(), applicant.end());
+    sort(apartment.begin(), apartment.end());
+    while(i < n && j < m) {
+        if(apartment[j] >= applicant[i] - k && apartment[j] <= applicant[i] + k) {
+            ans++;
+            i++;
+            j++;
+        } else if(applicant[i] - k > apartment[j]) {
+            j++;
+        } else {
+            i++;
+        }
+    }
+    cout<<ans<<endl;
 }
