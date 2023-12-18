@@ -36,15 +36,15 @@ int main() {
     sort(child.begin(), child.end());
     int ans = 0;
     int i = 0, j = n-1;
+    
     while(i <= j) {
-        if(child[i] + child[j] <= x) {
-            ans += 1;
-            i++;
+        if(child[i] + child[j] > x) {
             j--;
+            ans++;
         } else {
-            ans += 2;
             i++;
             j--;
+            ans++;
         }
     }
     cout<<ans<<endl;
